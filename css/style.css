@@ -1,0 +1,45 @@
+h1 {
+  font-family: arial;
+  font-weight: bold;
+  font-size: 50px;
+  /*color: #006699;*/
+  opacity: 0.7;
+  text-shadow: 2px 2px 8px #2e2e1f;
+  /*text-shadow: -0px 0 black, 0 0px black, 0px 0 black, 0 -2px black;*/
+}
+
+.wellSpace {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-style: groove;
+  border-width: 1px;
+  border-color: #0077b3;
+}
+
+.taskItem {
+  display: inline-block;
+  width: 100%;
+}
+
+.badgeToDo {
+  margin-top: 4px;
+  margin-left: 5px;
+}
+
+.taskNameSpan {
+  max-width: 170px;
+  word-wrap: break-word;
+}
+
+.updateBtn {
+  width: 86%;
+}
+
+.formToDo {
+  margin-bottom: 15px;
+}
+
+.strikeThrough {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
