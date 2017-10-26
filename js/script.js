@@ -1,3 +1,4 @@
+
 function TaskList() {
 
   this.name = document.getElementById('name');
@@ -46,8 +47,8 @@ TaskList.prototype.userAddTaskListItemHTML = function (taskName, taskPriority) {
   prioritySpan.className += ' badge badgeToDo ';
 
   var controlSpan = document.createElement('span');
-  var checkBox = this.addTaskItemCheckBox(nameSpan);
   var editBtn = this.addTaskItemEditButton(nameSpan);
+  var checkBox = this.addTaskItemCheckBox(nameSpan, editBtn);
   var deleteBtn = this.addTaskItemDeleteButton();
   controlSpan.className += ' pull-right ';
   controlSpan.append(checkBox, editBtn, deleteBtn);
@@ -61,7 +62,8 @@ TaskList.prototype.userAddTaskListItemHTML = function (taskName, taskPriority) {
     priority: parseInt(taskPriority),
     li: newLi,
     id: newLi.id,
-    span: nameSpan
+    namespan: nameSpan,
+    editspan: editBtn
   };
 
   return taskData
@@ -176,15 +178,17 @@ TaskList.prototype.addTaskItemEditButton = function (nameSpan) {
   return editBtn;
 };
 
-TaskList.prototype.addTaskItemCheckBox = function (nameSpan) {
+TaskList.prototype.addTaskItemCheckBox = function (nameSpan, editBtn) {
   var checkBox = document.createElement('input');
   checkBox.type = 'checkbox';
 
   checkBox.addEventListener('change', function(e){
     if (nameSpan.classList.contains('strikeThrough')){
       nameSpan.classList.remove('strikeThrough');
+      editBtn.classList.remove('hide');
     } else {
-      nameSpan.classList.add('strikeThrough')
+      nameSpan.classList.add('strikeThrough');
+      editBtn.classList.add('hide');
     };
     currentTaskList.refresh();
   });
@@ -217,14 +221,14 @@ TaskList.prototype.refresh = function () {
 
   for(var i=0; i<this.tasks.length; i++) {
     var currentTask = this.tasks[i];
-    if (currentTask.span.classList.contains('strikeThrough') == false) {
+    if (currentTask.namespan.classList.contains('strikeThrough') == false) {
       this.the_list.append(currentTask.li);
     };
   };
 
   for(var i=0; i<this.tasks.length; i++) {
     var currentTask = this.tasks[i];
-    if (currentTask.span.classList.contains('strikeThrough') == true) {
+    if (currentTask.namespan.classList.contains('strikeThrough') == true) {
       this.the_list.append(currentTask.li);
     };
   };
