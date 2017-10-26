@@ -2,10 +2,8 @@ h1 {
   font-family: arial;
   font-weight: bold;
   font-size: 50px;
-  /*color: #006699;*/
   opacity: 0.7;
   text-shadow: 2px 2px 8px #60656d;
-  /*text-shadow: -0px 0 black, 0 0px black, 0px 0 black, 0 -2px black;*/
 }
 
 .wellSpace {
