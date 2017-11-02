@@ -12,7 +12,7 @@ function TaskList() {
   this.taskCounter = 0;
 
   this.assignEventListeners();
-}
+} //WOW! Youre the first student to use a constructor/prototypes. Great use! -RJH
 
 TaskList.prototype.assignEventListeners = function () {
 
@@ -20,11 +20,11 @@ TaskList.prototype.assignEventListeners = function () {
     e.preventDefault();
     currentTaskList.addTaskItem(this.name.value, this.priority.value);
     currentTaskList.refresh();
-  });
+  }); //Good use of the form submit functionality! -RJH
 
   this.removeAll.addEventListener('click', function(e) {
     e.preventDefault();
-    var deleteConfirm = confirm("Are you sure you want to delete ALL the tasks?");
+    var deleteConfirm = confirm("Are you sure you want to delete ALL the tasks?"); //Great edge casing! -RJH
     if (deleteConfirm) {
     currentTaskList.removeAllTasks();
     }
@@ -35,6 +35,7 @@ TaskList.prototype.userAddTaskListItemHTML = function (taskName, taskPriority) {
   var newLi = document.createElement('li');
   newLi.id = "task_" + this.taskCounter++;
   newLi.className += ' list-group-item taskItem ';
+  //I like your use of priority for the list. Great use of UI/UX design. 
 
   var nameSpan = document.createElement('span');
   nameSpan.textContent = taskName;
@@ -50,7 +51,7 @@ TaskList.prototype.userAddTaskListItemHTML = function (taskName, taskPriority) {
   var editBtn = this.addTaskItemEditButton(nameSpan);
   var checkBox = this.addTaskItemCheckBox(nameSpan, editBtn);
   var deleteBtn = this.addTaskItemDeleteButton();
-  controlSpan.className += ' pull-right ';
+  controlSpan.className += ' pull-right '; //Good job including the spaces around the class name -RJH
   controlSpan.append(checkBox, editBtn, deleteBtn);
 
   newLi.append(nameSpan, prioritySpan, controlSpan);
@@ -114,13 +115,13 @@ TaskList.prototype.userRemoveTaskItem = function(deleteBtnElement) {
   }
 
 };
-
+//Great work implementing this into your code -RJH
 TaskList.prototype.editTaskItem = function (editBtn, nameSpan) {
   var currentTaskList = this;
   var taskId = nameSpan.parentNode.id;
   var newTaskName = null;
   var isEditable = nameSpan.getAttribute("contenteditable");
-  isEditable = isEditable == 'true' ? true : false;
+  isEditable = isEditable == 'true' ? true : false; //Ternary!!!! -RJH
 
   if(isEditable) {
     nameSpan.setAttribute("contenteditable", "false");
@@ -177,6 +178,7 @@ TaskList.prototype.addTaskItemEditButton = function (nameSpan) {
 
   return editBtn;
 };
+//This is above and beyond, great work!
 
 TaskList.prototype.addTaskItemCheckBox = function (nameSpan, editBtn) {
   var checkBox = document.createElement('input');
